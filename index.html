@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Document Search</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <main class="workspace">
+        <aside class="documents" aria-label="Documents">
+          <div class="section-title">
+            <h2>Documents</h2>
+            <span id="count" style="font-size: 11px; color: #8b9e90">0</span>
+          </div>
+          <button id="upload" class="upload">＋ Upload documents</button>
+          <p class="formats">PDF, images, TXT, MD, CSV, JSON</p>
+          <div
+            id="upload-progress"
+            class="hidden"
+            role="status"
+            style="
+              font-size: 11px;
+              line-height: 1.6;
+              color: #759382;
+              margin-bottom: 12px;
+            "
+          >
+            <span id="progress-label"></span>
+            <button id="cancel-upload" class="text-button">Cancel</button>
+          </div>
+          <div id="library"></div>
+          <div class="document-actions">
+            <button id="paste" class="text-button">Paste text</button
+            ><button id="samples" class="text-button">Load example</button>
+          </div>
+        </aside>
+        <section class="chat" aria-label="Document search">
+          <div class="chat-heading">
+            <h2>Search</h2>
+            <button class="text-button" id="clear">Clear results</button>
+          </div>
+          <div class="conversation" id="conversation" aria-live="polite"></div>
+          <div class="error hidden" id="error" role="alert"></div>
+          <form class="composer" id="ask-form">
+            <textarea
+              id="question"
+              aria-label="Search documents"
+              placeholder="Enter keywords or a question…"
+              maxlength="2000"
+              required
+            ></textarea>
+            <div class="composer-footer">
+              <span class="search-hint">Search your files</span
+              ><button class="send" id="send" type="submit">Search ↑</button>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
+    <input
+      type="file"
+      id="file"
+      accept=".pdf,.png,.jpg,.jpeg,.webp,.txt,.md,.csv,.json"
+      multiple
+    />
+    <dialog id="paste-dialog">
+      <h2 id="edit-title">Add a document</h2>
+      <p
+        id="review-note"
+        class="hidden"
+        style="font-size: 11px; line-height: 1.6; color: #819487"
+      >
+        Check extracted text for OCR mistakes before using it.
+      </p>
+      <form id="paste-form">
+        <input
+          id="paste-name"
+          aria-label="Document name"
+          placeholder="Document name"
+          maxlength="180"
+          required
+        /><textarea
+          id="paste-text"
+          aria-label="Document content"
+          placeholder="Paste document text…"
+          required
+        ></textarea>
+        <div class="dialog-actions">
+          <button type="button" id="cancel">Cancel</button
+          ><button type="submit" class="send">Add document</button>
+        </div>
+      </form>
+    </dialog>
+    <div id="toast" class="toast hidden" role="status"></div>
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>

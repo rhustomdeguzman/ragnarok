@@ -1,0 +1,376 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: #f8faf9;
+  color: #24463d;
+  font:
+    14px system-ui,
+    sans-serif;
+}
+button,
+textarea,
+select,
+input {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+  border: 1px solid #d9e3dd;
+  background: white;
+  color: #426659;
+  border-radius: 8px;
+  padding: 9px 13px;
+  font-size: 12px;
+}
+button:hover {
+  background: #eef5f0;
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+button:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 2px solid #22816b;
+  outline-offset: 3px;
+}
+.app {
+  max-width: 1100px;
+  height: 100dvh;
+  margin: auto;
+  padding: 0 28px;
+  display: flex;
+  flex-direction: column;
+}
+.workspace {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  flex: 1;
+  min-height: 0;
+}
+.documents {
+  padding: 25px 22px 20px 0;
+  border-right: 1px solid #e1e8e3;
+  overflow: auto;
+}
+.section-title,
+.chat-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+h2 {
+  font-size: 13px;
+  font-weight: 650;
+  margin: 0;
+}
+.upload {
+  border-style: dashed;
+  border-color: #afc3b6;
+  padding: 13px;
+  width: 100%;
+}
+.formats {
+  font-size: 10px;
+  color: #8e9f94;
+  text-align: center;
+  margin: 9px 0 18px;
+}
+.doc {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e6ede8;
+}
+.doc-info {
+  min-width: 0;
+  flex: 1;
+}
+.doc-name {
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.doc small {
+  display: block;
+  font-size: 10px;
+  color: #91a195;
+  margin-top: 4px;
+}
+.remove {
+  border: 0;
+  background: none;
+  color: #90a294;
+  font-size: 18px;
+  padding: 3px 5px;
+}
+.text-button {
+  border: 0;
+  background: none;
+  padding: 0;
+  font-size: 11px;
+  color: #759382;
+}
+.document-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+.empty {
+  color: #91a195;
+  font-size: 12px;
+  line-height: 1.7;
+  margin-top: 15px;
+}
+.chat {
+  padding: 25px 0 20px 30px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.conversation {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 5px 5px 5px 0;
+}
+.welcome {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 25px;
+}
+.welcome h1 {
+  font-size: 25px;
+  letter-spacing: -0.7px;
+  font-weight: 550;
+  margin: 0 0 10px;
+}
+.welcome p {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #8b9e90;
+  margin: 0;
+}
+.message {
+  margin-bottom: 24px;
+}
+.message.user {
+  width: fit-content;
+  max-width: 85%;
+  margin-left: auto;
+  padding: 11px 15px;
+  border-radius: 12px;
+  background: #eaf2ec;
+}
+.who {
+  font-size: 10px;
+  font-weight: 650;
+  color: #779884;
+  margin-bottom: 7px;
+}
+.message.user .who {
+  display: none;
+}
+.answer {
+  font-size: 13px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.source {
+  margin-top: 9px;
+  border: 1px solid #e0e8e1;
+  border-radius: 7px;
+  padding: 10px 12px;
+}
+.source summary {
+  font-size: 11px;
+  color: #6b8b77;
+  cursor: pointer;
+}
+.source p {
+  font-size: 12px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  color: #819487;
+  max-height: 240px;
+  overflow: auto;
+}
+.composer {
+  background: white;
+  border: 1px solid #d7e3d9;
+  border-radius: 12px;
+  padding: 13px;
+  box-shadow: 0 3px 15px #16372408;
+  margin-top: 12px;
+}
+.composer textarea {
+  width: 100%;
+  display: block;
+  resize: none;
+  background: none;
+  border: 0;
+  min-height: 55px;
+  max-height: 140px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #24463d;
+}
+.composer textarea:focus {
+  outline: none;
+}
+.composer:focus-within {
+  border-color: #83ad95;
+}
+.composer-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.send {
+  background: #236653;
+  border: 0;
+  color: white;
+  padding: 9px 17px;
+}
+.send:hover {
+  background: #184d3e;
+}
+.error {
+  color: #a64f39;
+  font-size: 12px;
+  line-height: 1.6;
+  margin-top: 8px;
+}
+.pending {
+  font-size: 12px;
+  color: #7a9986;
+  margin: 10px 0;
+}
+.hidden {
+  display: none !important;
+}
+#file {
+  display: none;
+}
+dialog {
+  border: 1px solid #d7e3d9;
+  border-radius: 12px;
+  padding: 25px;
+  width: 90%;
+  max-width: 480px;
+  color: #24463d;
+}
+dialog::backdrop {
+  background: #173d3655;
+}
+dialog input,
+dialog textarea {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #dae5dc;
+  border-radius: 7px;
+  margin: 12px 0;
+}
+dialog textarea {
+  height: 180px;
+}
+.dialog-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 90%;
+  background: #244d3c;
+  color: white;
+  border-radius: 8px;
+  padding: 12px 17px;
+  font-size: 12px;
+  z-index: 5;
+}
+@media (max-width: 650px) {
+  .app {
+    padding: 0 16px;
+  }
+  .workspace {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+  .documents {
+    padding: 15px 0;
+    border-right: 0;
+    border-bottom: 1px solid #e1e8e3;
+    max-height: 200px;
+    overflow: auto;
+  }
+  .section-title {
+    margin-bottom: 10px;
+  }
+  .upload {
+    width: auto;
+    padding: 8px 12px;
+  }
+  .formats {
+    display: inline;
+    font-size: 9px;
+    margin-left: 9px;
+  }
+  #library {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  .doc {
+    padding: 6px 9px;
+    border: 1px solid #e1e8e3;
+    border-radius: 6px;
+    max-width: 100%;
+  }
+  .doc-name {
+    max-width: 170px;
+  }
+  .doc small {
+    display: none;
+  }
+  .document-actions {
+    margin-top: 10px;
+  }
+  .chat {
+    padding: 16px 0 14px;
+  }
+  .chat-heading {
+    margin-bottom: 5px;
+  }
+  .welcome {
+    padding: 20px;
+  }
+  .welcome h1 {
+    font-size: 23px;
+  }
+  .composer {
+    margin-top: 5px;
+  }
+}
+
+.search-hint {
+  font-size: 11px;
+  color: #859a8b;
+}
